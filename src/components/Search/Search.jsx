@@ -5,23 +5,21 @@ import styles from "./Search.module.css";
 
 const Search = () => {
   return (
-    <Autocomplete
-      className={styles.search}
-      placeholder="Search"
-      leftSection={
-        <IconSearch style={{ width: rem(16), height: rem(16) }} stroke={1.5} />
-      }
-      data={[
-        "React",
-        "Angular",
-        "Vue",
-        "Next.js",
-        "Riot.js",
-        "Svelte",
-        "Blitz.js",
-      ]}
-      visibleFrom="xs"
-    />
+    <>
+      <Autocomplete
+        variant="filled"
+        placeholder="Search"
+        rightSection={
+          <IconSearch
+            style={{ width: rem(16), height: rem(16) }}
+            stroke={1.5}
+            className={styles.icon}
+          />
+        }
+        classNames={{ root: styles.search, inner: styles.searchInput }}
+        radius="md"
+      />
+    </>
   );
 };
 

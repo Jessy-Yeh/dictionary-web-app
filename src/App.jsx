@@ -7,10 +7,12 @@ import Search from "./components/Search/Search";
 
 function App() {
   return (
-    <MantineProvider>
-      <Navbar />
-      <Search />
-    </MantineProvider>
+    <div className="container">
+      <MantineProvider>
+        <Navbar />
+        <Search />
+      </MantineProvider>
+    </div>
   );
 }
 

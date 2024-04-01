@@ -1,12 +1,24 @@
-import { Autocomplete, rem } from "@mantine/core";
+import { TextInput, rem } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
+import { useState } from "react";
 
 import styles from "./Search.module.css";
 
-const Search = () => {
+const Search = ({ setSearchInput }) => {
+  const [inputText, setInputText] = useState("");
+  function handleChange(e) {
+    setInputText(e.target.value);
+  }
+
+  function handleKeyUp(e) {
+    if (e.key === "Enter") {
+      setSearchInput(inputText);
+    }
+  }
+
   return (
     <>
-      <Autocomplete
+      <TextInput
         variant="filled"
         placeholder="Search"
         rightSection={
@@ -18,6 +30,9 @@ const Search = () => {
         }
         classNames={{ root: styles.search, inner: styles.searchInput }}
         radius="md"
+        value={inputText}
+        onChange={handleChange}
+        onKeyUp={handleKeyUp}
       />
     </>
   );

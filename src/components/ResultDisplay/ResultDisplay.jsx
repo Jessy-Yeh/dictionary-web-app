@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import MeaningData from "../MeaningData/MeaningData";
+import styles from "./ResultDisplay.module.css";
 
 const ResultDisplay = ({ searchInput }) => {
   const [wordData, setWordData] = useState({});
@@ -30,7 +31,7 @@ const ResultDisplay = ({ searchInput }) => {
     <div>
       <div>
         <div>
-          <h1>{wordData.word}</h1>
+          <h1 className={styles.word}>{wordData.word}</h1>
           {/* <p>{wordData?.phonetics[0]?.text}</p> */}
         </div>
         {/* <button onClick={playAudio} /> */}

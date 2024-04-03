@@ -1,5 +1,5 @@
 .line {
-  background-color: #979797;
+  background-color: #ececec;
   width: 100%;
   height: 1px;
 }
@@ -9,4 +9,51 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+
+.partOfSpeech {
+  font-weight: 700;
+  margin: 1rem 0;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: rgb(167, 167, 167);
+}
+
+.meaningSubtitle {
+  margin-top: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li::marker {
+  color: #c02adf;
+}
+
+.definition {
+  list-style-type: disc;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+.synonyms-main-container {
+  display: flex;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.synonyms-second-container {
+  display: flex;
+  gap: 0.2rem;
+  flex-wrap: wrap;
+}
+
+.synonyms {
+  color: #c02adf;
+  font-weight: bold;
 }

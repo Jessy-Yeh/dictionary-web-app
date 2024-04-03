@@ -36,10 +36,12 @@ const ResultDisplay = ({ searchInput }) => {
         {/* <button onClick={playAudio} /> */}
       </div>
 
-      {wordData?.meanings?.map((word, index) => {
-        <div key={index}>
-          <MeaningData word={word} />
-        </div>;
+      {wordData?.meanings?.map((meaning, index) => {
+        return (
+          <ul key={index}>
+            <MeaningData meaning={meaning} />
+          </ul>
+        );
       })}
     </div>
   );

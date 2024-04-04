@@ -1,15 +1,21 @@
 import { useState, useEffect } from "react";
+import { IconPlayerPlayFilled } from "@tabler/icons-react";
+
 import MeaningData from "../MeaningData/MeaningData";
 import styles from "./ResultDisplay.module.css";
 
 const ResultDisplay = ({ searchInput }) => {
   const [wordData, setWordData] = useState({});
   const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchInput}`;
-  // const audio = new Audio(`${wordData?.phonetics.audio}`);
+  const audio = new Audio(
+    `${
+      wordData?.phonetics?.find((phonetic) => phonetic.audio?.length > 0).audio
+    }`
+  );
 
-  // const playAudio = () => {
-  //   audio.play();
-  // };
+  const playAudio = () => {
+    audio.play();
+  };
 
   async function fetchWordData(url) {
     try {
@@ -29,17 +35,19 @@ const ResultDisplay = ({ searchInput }) => {
 
   return (
     <div>
-      <div>
+      <div className={styles[`word-container`]}>
         <div>
           <h1 className={styles.word}>{wordData.word}</h1>
-          <p>
+          <p className={styles.symbol}>
             {
               wordData?.phonetics?.find((phonetic) => phonetic.text?.length > 0)
                 .text
             }
           </p>
         </div>
-        {/* <button onClick={playAudio} /> */}
+        <button className={styles.playButton} onClick={playAudio}>
+          <IconPlayerPlayFilled className={styles.playIcon} />
+        </button>
       </div>
 
       {wordData?.meanings?.map((meaning, index) => {

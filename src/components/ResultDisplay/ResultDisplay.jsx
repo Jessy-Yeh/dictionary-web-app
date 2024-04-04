@@ -12,7 +12,7 @@ const ResultDisplay = ({ searchInput }) => {
   const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchInput}`;
   const audio = new Audio(
     `${
-      wordData?.phonetics?.find((phonetic) => phonetic.audio?.length > 0).audio
+      wordData?.phonetics?.find((phonetic) => phonetic.audio?.length > 0)?.audio
     }`
   );
 

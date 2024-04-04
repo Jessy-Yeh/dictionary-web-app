@@ -32,7 +32,12 @@ const ResultDisplay = ({ searchInput }) => {
       <div>
         <div>
           <h1 className={styles.word}>{wordData.word}</h1>
-          {/* <p>{wordData?.phonetics[0]?.text}</p> */}
+          <p>
+            {
+              wordData?.phonetics?.find((phonetic) => phonetic.text?.length > 0)
+                .text
+            }
+          </p>
         </div>
         {/* <button onClick={playAudio} /> */}
       </div>

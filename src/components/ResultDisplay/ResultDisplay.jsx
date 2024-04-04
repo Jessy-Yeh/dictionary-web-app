@@ -66,6 +66,17 @@ const ResultDisplay = ({ searchInput }) => {
               </div>
             );
           })}
+
+          <div className={styles.line}></div>
+          <div className={styles[`source-container`]}>
+            <p>Source</p>
+            <a
+              href={`https://en.wiktionary.org/wiki/${wordData.word}`}
+              target="_blank"
+            >
+              https://en.wiktionary.org/wiki/{wordData.word}
+            </a>
+          </div>
         </div>
       ) : isSearchNotFound ? (
         <div className={styles[`search-error-page`]}>

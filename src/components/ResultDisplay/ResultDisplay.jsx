@@ -4,9 +4,11 @@ import { IconPlayerPlayFilled } from "@tabler/icons-react";
 import MeaningData from "../MeaningData/MeaningData";
 import styles from "./ResultDisplay.module.css";
 import bookReading from "/book-reading.svg";
+import noResult from "/no-result.svg";
 
 const ResultDisplay = ({ searchInput }) => {
   const [wordData, setWordData] = useState({});
+  const [isSearchNotFound, setIsSearchNotFoud] = useState(false);
   const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchInput}`;
   const audio = new Audio(
     `${
@@ -23,6 +25,9 @@ const ResultDisplay = ({ searchInput }) => {
       const res = await fetch(url);
       const data = await res.json();
       setWordData(data[0]);
+      if (res.status === 404) {
+        setIsSearchNotFoud(true);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -61,6 +66,11 @@ const ResultDisplay = ({ searchInput }) => {
               </ul>
             );
           })}
+        </div>
+      ) : isSearchNotFound ? (
+        <div className={styles[`search-error-page`]}>
+          <img src={noResult} />
+          <p>Ooops! Nothing Found</p>
         </div>
       ) : (
         <div className={styles[`main-page`]}>

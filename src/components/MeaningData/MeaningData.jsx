@@ -10,13 +10,15 @@ const MeaningData = ({ meaning }) => {
       <h2 className={`${styles.subtitle} ${styles.meaningSubtitle}`}>
         Meaning
       </h2>
-      {meaning.definitions.map((definition, index) => {
-        return (
-          <li className={styles.definition} key={index}>
-            <p>{definition.definition}</p>
-          </li>
-        );
-      })}
+      <ul>
+        {meaning.definitions.map((definition, index) => {
+          return (
+            <li className={styles.definition} key={index}>
+              {definition.definition}
+            </li>
+          );
+        })}
+      </ul>
 
       {meaning.synonyms.length > 0 ? (
         <div className={styles[`synonyms-main-container`]}>

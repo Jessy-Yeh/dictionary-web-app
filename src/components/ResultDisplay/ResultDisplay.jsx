@@ -61,9 +61,9 @@ const ResultDisplay = ({ searchInput }) => {
 
           {wordData?.meanings?.map((meaning, index) => {
             return (
-              <ul key={index}>
+              <div key={index}>
                 <MeaningData meaning={meaning} />
-              </ul>
+              </div>
             );
           })}
         </div>

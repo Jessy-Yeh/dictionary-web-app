@@ -3,6 +3,7 @@ import { IconPlayerPlayFilled } from "@tabler/icons-react";
 
 import MeaningData from "../MeaningData/MeaningData";
 import styles from "./ResultDisplay.module.css";
+import bookReading from "/book-reading.svg";
 
 const ResultDisplay = ({ searchInput }) => {
   const [wordData, setWordData] = useState({});
@@ -34,30 +35,40 @@ const ResultDisplay = ({ searchInput }) => {
   }, [searchInput, url]);
 
   return (
-    <div>
-      <div className={styles[`word-container`]}>
+    <>
+      {wordData?.word?.length > 0 ? (
         <div>
-          <h1 className={styles.word}>{wordData.word}</h1>
-          <p className={styles.symbol}>
-            {
-              wordData?.phonetics?.find((phonetic) => phonetic.text?.length > 0)
-                .text
-            }
-          </p>
-        </div>
-        <button className={styles.playButton} onClick={playAudio}>
-          <IconPlayerPlayFilled className={styles.playIcon} />
-        </button>
-      </div>
+          <div className={styles[`word-container`]}>
+            <div>
+              <h1 className={styles.word}>{wordData.word}</h1>
+              <p className={styles.symbol}>
+                {
+                  wordData?.phonetics?.find(
+                    (phonetic) => phonetic.text?.length > 0
+                  ).text
+                }
+              </p>
+            </div>
+            <button className={styles.playButton} onClick={playAudio}>
+              <IconPlayerPlayFilled className={styles.playIcon} />
+            </button>
+          </div>
 
-      {wordData?.meanings?.map((meaning, index) => {
-        return (
-          <ul key={index}>
-            <MeaningData meaning={meaning} />
-          </ul>
-        );
-      })}
-    </div>
+          {wordData?.meanings?.map((meaning, index) => {
+            return (
+              <ul key={index}>
+                <MeaningData meaning={meaning} />
+              </ul>
+            );
+          })}
+        </div>
+      ) : (
+        <div className={styles[`main-page`]}>
+          <img src={bookReading} />
+          <p>Search Something...</p>
+        </div>
+      )}
+    </>
   );
 };
 

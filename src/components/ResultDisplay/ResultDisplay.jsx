@@ -6,7 +6,7 @@ import styles from "./ResultDisplay.module.css";
 import bookReading from "/book-reading.svg";
 import noResult from "/no-result.svg";
 
-const ResultDisplay = ({ searchInput }) => {
+const ResultDisplay = ({ searchInput, isDarkMode }) => {
   const [wordData, setWordData] = useState({});
   const [isSearchNotFound, setIsSearchNotFoud] = useState(false);
   const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchInput}`;
@@ -70,7 +70,11 @@ const ResultDisplay = ({ searchInput }) => {
           })}
 
           <div className={styles.line}></div>
-          <div className={styles[`source-container`]}>
+          <div
+            className={`${styles[`source-container`]} ${
+              isDarkMode ? styles.darkMode : ""
+            }`}
+          >
             <p>Source</p>
             <a
               href={`https://en.wiktionary.org/wiki/${wordData.word}`}

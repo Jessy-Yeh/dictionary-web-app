@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
+  padding-top: 1rem;
 }
 
 .menuRight {
@@ -20,4 +20,8 @@
 
 .logo {
   cursor: pointer;
+}
+
+.dropDown {
+  color: white;
 }

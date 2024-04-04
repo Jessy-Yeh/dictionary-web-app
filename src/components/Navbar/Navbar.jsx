@@ -4,7 +4,7 @@ import { IconBook } from "@tabler/icons-react";
 
 import styles from "./Navbar.module.css";
 
-const Navbar = ({ setSearchInput }) => {
+const Navbar = ({ setSearchInput, isDarkMode, setIsDarkMode }) => {
   return (
     <nav className={styles.menu}>
       <IconBook onClick={() => setSearchInput("")} className={styles.logo} />
@@ -14,9 +14,14 @@ const Navbar = ({ setSearchInput }) => {
           placeholder="Pick value"
           data={["Serif", "Angular", "Vue", "Svelte"]}
           defaultValue="Serif"
+          classNames={isDarkMode ? { input: styles.dropDown } : ""}
         />
         <div className={styles.line}></div>
-        <Switch color="grape" />
+        <Switch
+          color="grape"
+          checked={isDarkMode}
+          onChange={() => setIsDarkMode((prev) => !prev)}
+        />
       </div>
     </nav>
   );

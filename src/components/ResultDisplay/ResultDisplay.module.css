@@ -70,3 +70,7 @@
 .source-container > a:visited {
   color: black;
 }
+
+.darkMode > a {
+  color: white;
+}

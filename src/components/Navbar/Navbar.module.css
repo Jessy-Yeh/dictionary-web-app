@@ -17,3 +17,7 @@
   height: 20px;
   margin-right: 1rem;
 }
+
+.logo {
+  cursor: pointer;
+}

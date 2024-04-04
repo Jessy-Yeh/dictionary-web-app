@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="container">
       <MantineProvider>
-        <Navbar />
+        <Navbar setSearchInput={setSearchInput} />
         <Search setSearchInput={setSearchInput} />
         <ResultDisplay searchInput={searchInput} />
       </MantineProvider>

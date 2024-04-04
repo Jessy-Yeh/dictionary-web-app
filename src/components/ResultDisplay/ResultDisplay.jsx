@@ -36,6 +36,8 @@ const ResultDisplay = ({ searchInput }) => {
   useEffect(() => {
     if (searchInput) {
       fetchWordData(url);
+    } else {
+      setWordData({});
     }
   }, [searchInput, url]);
 

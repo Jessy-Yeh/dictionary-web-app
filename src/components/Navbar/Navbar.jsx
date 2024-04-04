@@ -4,10 +4,10 @@ import { IconBook } from "@tabler/icons-react";
 
 import styles from "./Navbar.module.css";
 
-const Navbar = () => {
+const Navbar = ({ setSearchInput }) => {
   return (
     <nav className={styles.menu}>
-      <IconBook />
+      <IconBook onClick={() => setSearchInput("")} className={styles.logo} />
       <div className={styles.menuRight}>
         <Select
           variant="unstyled"

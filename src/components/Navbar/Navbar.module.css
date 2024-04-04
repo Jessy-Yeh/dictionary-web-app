@@ -1,8 +1,14 @@
 .menu {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  margin-right: 1rem;
+  margin-top: 1rem;
+}
+
+.menuRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .line {

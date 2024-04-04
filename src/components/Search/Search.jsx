@@ -10,9 +10,14 @@ const Search = ({ setSearchInput }) => {
     setInputText(e.target.value);
   }
 
+  function searchWord() {
+    setSearchInput(inputText);
+    setInputText("");
+  }
+
   function handleKeyUp(e) {
     if (e.key === "Enter") {
-      setSearchInput(inputText);
+      searchWord();
     }
   }
 
@@ -26,7 +31,7 @@ const Search = ({ setSearchInput }) => {
             style={{ width: rem(16), height: rem(16) }}
             stroke={1.5}
             className={styles.icon}
-            onClick={() => setSearchInput(inputText)}
+            onClick={searchWord}
           />
         }
         classNames={{ root: styles.search }}

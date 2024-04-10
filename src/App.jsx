@@ -9,18 +9,13 @@ import ResultDisplay from "./components/ResultDisplay/ResultDisplay";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
   return (
-    <div className={`container ${isDarkMode ? `darkMode` : ""}`}>
+    <div className="container">
       <MantineProvider>
-        <Navbar
-          setSearchInput={setSearchInput}
-          isDarkMode={isDarkMode}
-          setIsDarkMode={setIsDarkMode}
-        />
+        <Navbar setSearchInput={setSearchInput} />
         <Search setSearchInput={setSearchInput} />
-        <ResultDisplay searchInput={searchInput} isDarkMode={isDarkMode} />
+        <ResultDisplay searchInput={searchInput} />
       </MantineProvider>
     </div>
   );

@@ -1,10 +1,13 @@
 import { Select } from "@mantine/core";
 import { Switch } from "@mantine/core";
-import { IconBook } from "@tabler/icons-react";
+import { IconBook, IconSun, IconMoon } from "@tabler/icons-react";
+import { useMantineColorScheme } from "@mantine/core";
 
 import styles from "./Navbar.module.css";
 
-const Navbar = ({ setSearchInput, isDarkMode, setIsDarkMode }) => {
+const Navbar = ({ setSearchInput, isDarkMode }) => {
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+
   return (
     <nav className={styles.menu}>
       <IconBook onClick={() => setSearchInput("")} className={styles.logo} />
@@ -17,11 +20,12 @@ const Navbar = ({ setSearchInput, isDarkMode, setIsDarkMode }) => {
           classNames={isDarkMode ? { input: styles.dropDown } : ""}
         />
         <div className={styles.line}></div>
-        <Switch
-          color="grape"
-          checked={isDarkMode}
-          onChange={() => setIsDarkMode((prev) => !prev)}
-        />
+        <Switch color="grape" onChange={toggleColorScheme} />
+        {colorScheme === "dark" ? (
+          <IconMoon className={styles.thumbIcon} />
+        ) : (
+          <IconSun className={styles.thumbIcon} />
+        )}
       </div>
     </nav>
   );

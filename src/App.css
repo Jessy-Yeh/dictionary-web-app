@@ -1,6 +1,7 @@
 .container {
   padding-left: 1rem;
   padding-right: 1rem;
+  margin: 0 auto;
   margin-bottom: 4rem;
 }
 
@@ -17,4 +18,16 @@
 .Serif {
   font-family: "PT Serif", serif;
   font-style: normal;
+}
+
+@media screen and (min-width: 600px) {
+  .container {
+    max-width: 80vw;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .container {
+    max-width: 50vw;
+  }
 }

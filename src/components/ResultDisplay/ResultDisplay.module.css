@@ -63,14 +63,6 @@
 }
 
 .source-container > a {
-  color: black;
+  color: inherit;
   letter-spacing: 1px;
-}
-
-.source-container > a:visited {
-  color: black;
-}
-
-.darkMode > a {
-  color: white;
 }

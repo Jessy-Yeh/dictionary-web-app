@@ -4,3 +4,18 @@
   margin-bottom: 4rem;
   height: 100vh;
 }
+
+.Mono {
+  font-family: "Space Mono", monospace;
+  font-style: normal;
+}
+
+.Sans {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.Serif {
+  font-family: "PT Serif", serif;
+  font-style: normal;
+}

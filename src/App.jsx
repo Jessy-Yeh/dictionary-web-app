@@ -9,11 +9,17 @@ import ResultDisplay from "./components/ResultDisplay/ResultDisplay";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
+  const [fontSelected, setFontSelected] = useState("");
 
   return (
-    <div className="container">
+    <div
+      className={`container ${fontSelected !== "" ? fontSelected : "Serif"}`}
+    >
       <MantineProvider>
-        <Navbar setSearchInput={setSearchInput} />
+        <Navbar
+          setSearchInput={setSearchInput}
+          setFontSelected={setFontSelected}
+        />
         <Search setSearchInput={setSearchInput} />
         <ResultDisplay searchInput={searchInput} />
       </MantineProvider>

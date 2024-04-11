@@ -4,9 +4,16 @@ import { IconBook, IconSun, IconMoon } from "@tabler/icons-react";
 import { useMantineColorScheme } from "@mantine/core";
 
 import styles from "./Navbar.module.css";
+import { useState } from "react";
 
-const Navbar = ({ setSearchInput, isDarkMode }) => {
+const Navbar = ({ setSearchInput, setFontSelected }) => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const [font, setFont] = useState("Serif");
+
+  function handleFonts(value) {
+    setFont(value);
+    setFontSelected(value);
+  }
 
   return (
     <nav className={styles.menu}>
@@ -14,10 +21,9 @@ const Navbar = ({ setSearchInput, isDarkMode }) => {
       <div className={styles.menuRight}>
         <Select
           variant="unstyled"
-          placeholder="Pick value"
-          data={["Serif", "Angular", "Vue", "Svelte"]}
-          defaultValue="Serif"
-          classNames={isDarkMode ? { input: styles.dropDown } : ""}
+          data={["Serif", "Sans", "Mono"]}
+          value={font}
+          onChange={handleFonts}
         />
         <div className={styles.line}></div>
         <Switch color="grape" onChange={toggleColorScheme} />

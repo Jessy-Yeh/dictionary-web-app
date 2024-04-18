@@ -6,6 +6,7 @@ import styles from "./Search.module.css";
 
 const Search = ({ setSearchInput }) => {
   const [inputText, setInputText] = useState("");
+
   function handleChange(e) {
     setInputText(e.target.value);
   }
@@ -39,6 +40,7 @@ const Search = ({ setSearchInput }) => {
         value={inputText}
         onChange={handleChange}
         onKeyUp={handleKeyUp}
+        data-testid="search-input"
       />
     </>
   );

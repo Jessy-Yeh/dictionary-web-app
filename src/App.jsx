@@ -1,32 +1,22 @@
 import "@mantine/core/styles.css";
 import { MantineProvider } from "@mantine/core";
-import { useState } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
-import Search from "./components/Search/Search";
-import ResultDisplay from "./components/ResultDisplay/ResultDisplay";
+import Home from "./components/Home/Home";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+]);
 
 function App() {
-  const [searchInput, setSearchInput] = useState("");
-  const [fontSelected, setFontSelected] = useState("");
-
   return (
-    <div
-      className={`container ${fontSelected !== "" ? fontSelected : "Serif"}`}
-    >
-      <MantineProvider>
-        <Navbar
-          setSearchInput={setSearchInput}
-          setFontSelected={setFontSelected}
-        />
-        <Search setSearchInput={setSearchInput} />
-        <ResultDisplay
-          searchInput={searchInput}
-          setSearchInput={setSearchInput}
-        />
-      </MantineProvider>
-    </div>
+    <MantineProvider>
+      <RouterProvider router={router} />
+    </MantineProvider>
   );
 }
 

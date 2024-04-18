@@ -1,6 +1,6 @@
 import styles from "./MeaningData.module.css";
 
-const MeaningData = ({ meaning }) => {
+const MeaningData = ({ meaning, setSearchInput }) => {
   return (
     <>
       <div className={styles[`partOfSpeech-container`]}>
@@ -25,7 +25,11 @@ const MeaningData = ({ meaning }) => {
           <h2 className={styles.subtitle}>Synonyms</h2>
           <ul className={styles[`synonyms-second-container`]}>
             {meaning.synonyms.map((synonym, index) => (
-              <li className={styles.synonyms} key={index}>
+              <li
+                className={styles.synonyms}
+                key={index}
+                onClick={() => setSearchInput(synonym)}
+              >
                 {synonym}
                 {meaning.synonyms[index + 1] !== undefined ? "," : null}
               </li>

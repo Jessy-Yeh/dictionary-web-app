@@ -21,7 +21,10 @@ function App() {
           setFontSelected={setFontSelected}
         />
         <Search setSearchInput={setSearchInput} />
-        <ResultDisplay searchInput={searchInput} />
+        <ResultDisplay
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+        />
       </MantineProvider>
     </div>
   );

@@ -1,6 +1,7 @@
 import styles from "./MeaningData.module.css";
+import { Link } from "react-router-dom";
 
-const MeaningData = ({ meaning, setSearchInput }) => {
+const MeaningData = ({ meaning }) => {
   return (
     <>
       <div className={styles[`partOfSpeech-container`]}>
@@ -25,13 +26,11 @@ const MeaningData = ({ meaning, setSearchInput }) => {
           <h2 className={styles.subtitle}>Synonyms</h2>
           <ul className={styles[`synonyms-second-container`]}>
             {meaning.synonyms.map((synonym, index) => (
-              <li
-                className={styles.synonyms}
-                key={index}
-                onClick={() => setSearchInput(synonym)}
-              >
-                {synonym}
-                {meaning.synonyms[index + 1] !== undefined ? "," : null}
+              <li className={styles.synonyms} key={index} onClick={() => {}}>
+                <Link to={`?query=${synonym}`}>
+                  {synonym}
+                  {meaning.synonyms[index + 1] !== undefined ? "," : null}
+                </Link>
               </li>
             ))}
           </ul>

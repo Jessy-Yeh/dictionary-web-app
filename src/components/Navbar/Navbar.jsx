@@ -1,12 +1,12 @@
-import { Select } from "@mantine/core";
-import { Switch } from "@mantine/core";
+import { Select, Switch } from "@mantine/core";
 import { IconBook, IconSun, IconMoon } from "@tabler/icons-react";
 import { useMantineColorScheme } from "@mantine/core";
+import { Link } from "react-router-dom";
 
 import styles from "./Navbar.module.css";
 import { useState } from "react";
 
-const Navbar = ({ setSearchInput, setFontSelected }) => {
+const Navbar = ({ setFontSelected }) => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const [font, setFont] = useState("Serif");
 
@@ -17,7 +17,10 @@ const Navbar = ({ setSearchInput, setFontSelected }) => {
 
   return (
     <nav className={styles.menu}>
-      <IconBook onClick={() => setSearchInput("")} className={styles.logo} />
+      <Link to="/">
+        <IconBook className={styles.logo} />
+      </Link>
+
       <div className={styles.menuRight}>
         <Select
           variant="unstyled"

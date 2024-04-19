@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { IconPlayerPlayFilled } from "@tabler/icons-react";
+import { useSearchParams } from "react-router-dom";
 
 import MeaningData from "../MeaningData/MeaningData";
 import styles from "./ResultDisplay.module.css";
 import bookReading from "/book-reading.svg";
 import noResult from "/no-result.svg";
 
-const ResultDisplay = ({ searchInput, setSearchInput }) => {
+const ResultDisplay = () => {
   const [wordData, setWordData] = useState({});
   const [isSearchNotFound, setIsSearchNotFoud] = useState(false);
-  const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchInput}`;
+
   const audio = new Audio(
     `${
       wordData?.phonetics?.find((phonetic) => phonetic.audio?.length > 0)?.audio
@@ -33,13 +34,19 @@ const ResultDisplay = ({ searchInput, setSearchInput }) => {
     }
   }
 
+  const [searchParams] = useSearchParams();
+
+  const searchText = searchParams.get("query");
+
   useEffect(() => {
-    if (searchInput) {
+    const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${searchText}`;
+
+    if (searchText) {
       fetchWordData(url);
     } else {
       setWordData({});
     }
-  }, [searchInput, url]);
+  }, [searchText]);
 
   return (
     <>
@@ -64,10 +71,7 @@ const ResultDisplay = ({ searchInput, setSearchInput }) => {
           {wordData?.meanings?.map((meaning, index) => {
             return (
               <div key={index}>
-                <MeaningData
-                  meaning={meaning}
-                  setSearchInput={setSearchInput}
-                />
+                <MeaningData meaning={meaning} />
               </div>
             );
           })}
